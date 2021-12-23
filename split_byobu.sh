@@ -6,6 +6,7 @@
 # alt-F12   - disable/enable mouse
 # shift-F2  - split pane horizontally
 # ctrl-F2   - split pane vertically
+# shift-F5  - toggle splits arrangement
 
 # to copy and paste, shift-F12 to disable mouse then highlight and copy
 
