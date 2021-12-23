@@ -11,14 +11,14 @@
 # to copy and paste, shift-F12 to disable mouse then highlight and copy
 
 # tmux useful keybindings:
-# cat >> .tmux.conf << EOF
-# socket_path=~/.tmux_socket/default
-##setw -g mode-keys vi
+cat >> .tmux.conf << EOF
+socket_path=~/.tmux_socket/default
+setw -g mode-keys vi
 ## shortcut for synchronize-panes toggle
 ## START:sync
-#bind M-s set -g synchronize-panes
+bind M-s set -g synchronize-panes
 ## END:sync
-#EOF
+EOF
 
 
 # split tmux window to number of hosts listed in a file and ssh to them
