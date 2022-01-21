@@ -3,7 +3,7 @@ sudo yum install -y ansible
 # list namespaces
 kubectl get ns
 echo Enter name of namespace
-read namesapcename
+read namespacename
 #https://craignewtondev.medium.com/how-to-fix-kubernetes-namespace-deleting-stuck-in-terminating-state-5ed75792647e
 kubectl get namespace ${namespacename} -o json > /tmp/${namespacename}.json
 
@@ -26,6 +26,6 @@ cat>replace-finalizer.yml<<EOF
         },
   
 EOF
-ansible-playbook replace-finalizer.yml -e namesapcename=$namespacename
+ansible-playbook replace-finalizer.yml -e namespacename=$namespacename
 
 kubectl replace --raw "/api/v1/namespaces/tigera-system/finalize -f ${namespacename}.json
