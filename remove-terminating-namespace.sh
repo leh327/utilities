@@ -1,4 +1,5 @@
 #!/bin/sh
+sudo yum install -y ansible
 echo Enter name of namespace
 read namesapcename
 #https://craignewtondev.medium.com/how-to-fix-kubernetes-namespace-deleting-stuck-in-terminating-state-5ed75792647e
