@@ -1,6 +1,4 @@
 #!/bin/sh
-sudo yum install -y ansible
-# list namespaces
 kubectl get ns
 echo Enter name of namespace
 read namespacename
@@ -12,20 +10,12 @@ cat>replace-finalizer.yml<<EOF
   gather_facts: no
   tasks:
   - replace:
-      path: "/tmp//tmp/{{namespacename}}.json"
-      regexp: |
-        "spec": {
-            "finalizers": [
-                "kubernetes"
-            ]
-        },
-      replace: |
-        "spec": {
-           "finalizers": [
-           ]
-        },
+      path: "/tmp/{{namespacename}}.json"
+      after: '"finalizers": \['
+      regexp: '"kubernetes"'
+      replace:  ""
   
 EOF
 ansible-playbook replace-finalizer.yml -e namespacename=$namespacename
 
-kubectl replace --raw "/api/v1/namespaces/tigera-system/finalize -f ${namespacename}.json
+kubectl replace --raw "/api/v1/namespaces/${namespacename}/finalize" -f /tmp/${namespacename}.json
