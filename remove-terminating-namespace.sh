@@ -24,3 +24,4 @@ ansible-playbook replace-finalizer.yml -e namespacename=$namespacename
 kubectl replace --raw "/api/v1/namespaces/${namespacename}/finalize" -f /tmp/${namespacename}.json
 
 done
+kubectl get ns
